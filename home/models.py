@@ -13,7 +13,7 @@ class Question(models.Model):
     # addition method for adjudging recent question.
     def was_published_recently(self):
         # The publish date greater than or to equal last day that question is true.
-        return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
+        return timezone.now() >= self.pub_date >= timezone.now() - datetime.timedelta(days=1)
 
     def __str__(self):
         return self.question_text
